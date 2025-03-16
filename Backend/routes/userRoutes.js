@@ -9,14 +9,14 @@ router.get("/admin",verifytoken,authorizeRole("admin"), (req, res) => {
   });
 
 //both admin and manager 
-router.get("/manager",verifytoken, authorizeRole("admin","manager"),(req, res) => {
-    res.json({message:"welcome manager"});
+router.get("/teacher",verifytoken, authorizeRole("admin","teacher"),(req, res) => {
+    res.json({message:"welcome teacher"});
   });
 
 
 //all access 
-router.get("/user",verifytoken ,authorizeRole("user","admin","manager"),(req, res) => {
-    res.json({message:"welcome user"});
+router.get("/student",verifytoken ,authorizeRole("student","admin","teacher"),(req, res) => {
+    res.json({message:"welcome student"});
 });
 
 module.exports=router;
